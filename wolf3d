@@ -1,0 +1,4 @@
+#!/bin/bash
+
+cd /home/persona/wolf3d
+./run.sh
