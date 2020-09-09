@@ -2,6 +2,6 @@
 
 [ -z $TODO_FILE ] && echo "Please set TODO_FILE enviroment variable." && exit 1
 
-[ -z $1 ] && cp $TODO_FILE /tmp/mmenu && mmenu && </tmp/mmenu xargs -I @ sed -i '/^@$/d' $TODO_FILE
+[ -z $1 ] && cp $TODO_FILE /tmp/mmenu && mmenu "Completed: " && </tmp/mmenu xargs -I @ sed -i '/^@$/d' $TODO_FILE
 
 [ ! -z $1 ] && echo "$@" >> $TODO_FILE && sort $TODO_FILE -o $TODO_FILE
