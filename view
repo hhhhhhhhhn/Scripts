@@ -1,5 +1,5 @@
 #!/bin/bash
 
-cd "$NOTES_DIR" && [ -z "$1" ] && ls -1 > /tmp/mmenu && mmenu "Choose a file: " \
-&& <$(</tmp/mmenu) mmd | less -R \
+cd "$NOTES_DIR" && [ -z "$1" ] && ls -1 | grep ".md" | sed -e "s/\..*//" > /tmp/mmenu && mmenu "Choose a note: " \
+&& <"$(</tmp/mmenu).md" mmd | less -R \
 || <"${1}.md" mmd | less -R
