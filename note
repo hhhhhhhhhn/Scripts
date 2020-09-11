@@ -4,6 +4,8 @@
 
 [ -z $1 ] && ls -1 $NOTES_DIR | grep ".md" | sed -e "s/\..*//" > /tmp/mmenu && mmenu "Select note: " && NOTE=$(</tmp/mmenu) || NOTE=$1
 
+[ "$NOTE" = "" ] && exit 1
+
 TEMP_FILE="/tmp/bbn.md"
 FILE="${NOTES_DIR}/${NOTE}.md"
 DATE="$(date +'%D (%A)')"
