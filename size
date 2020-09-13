@@ -1,0 +1,18 @@
+case "$1" in
+	0|min)
+		setfont Tamsyn5x9r;;
+	1)
+		setfont Tamsyn6x12r;;
+	2)
+		setfont Tamsyn7x13r;;
+	3)
+		setfont Tamsyn7x14r;;
+	4)
+		setfont Tamsyn8x15r;;
+	5)
+		setfont Tamsyn8x16r;;
+	6|max)
+		setfont Tamsyn10x20r;;
+	*)
+		setfont Tamsyn8x16r;;
+esac
