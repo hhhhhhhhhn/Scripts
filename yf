@@ -1,0 +1,8 @@
+#!/bin/sh
+
+case $1 in
+	*.md)
+		cat $1 | pandoc -f markdown -t html - | xclip -t text/html -selection clipboard;;
+	*)
+		cat $1 | xclip -selection clipboard;;
+esac

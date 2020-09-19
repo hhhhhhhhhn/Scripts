@@ -22,3 +22,4 @@ mmenu, and need them to work to varying extent.
   pandoc.
 - wtconverter FILE: Converts a Windows Terminal theme to one compatible with
   the "color" script.
+- yf: yank file, if markdown as html.
