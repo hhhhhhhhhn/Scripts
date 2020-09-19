@@ -1,7 +1,61 @@
-#!/bin/sh
+#!/bin/bash
 
 # Converts Windows Terminal themes to colorschemes usable by the "color" script.
 
-grep -Ei "black|blue|cyan|green|purple|red|white|yellow|background" $1 \
-| tr [:upper:] [:lower:] | sed -e s/\"//g -e "s/ //g" -e s/:#/=/g -e s/,//g    \
--e s/purple/magenta/g -e /black=/d -e s/background/black/g
+source <(grep ":" "$1" | tr [:upper:] [:lower:] | sed -e s/\"//g -e "s/ //g" \
+-e "s/:#/=/g" -e s/,//g -e s/purple/magenta/g -e /name:/d )
+
+[ "$foreground" = "$black" ] && FG_COMMAND="setterm -foreground black"
+[ "$foreground" = "$white" ] && FG_COMMAND="setterm -foreground white"
+[ "$foreground" = "$red" ] && FG_COMMAND="setterm -foreground red"
+[ "$foreground" = "$green" ] && FG_COMMAND="setterm -foreground green"
+[ "$foreground" = "$blue" ] && FG_COMMAND="setterm -foreground blue"
+[ "$foreground" = "$yellow" ] && FG_COMMAND="setterm -foreground yellow"
+[ "$foreground" = "$magenta" ] && FG_COMMAND="setterm -foreground magenta"
+[ "$foreground" = "$cyan" ] && FG_COMMAND="setterm -foreground cyan"
+[ "$foreground" = "$brightblack" ] && FG_COMMAND="setterm -foreground brightblack"
+[ "$foreground" = "$brightwhite" ] && FG_COMMAND="setterm -foreground brightwhite"
+[ "$foreground" = "$brightred" ] && FG_COMMAND="setterm -foreground brightred"
+[ "$foreground" = "$brightgreen" ] && FG_COMMAND="setterm -foreground brightgreen"
+[ "$foreground" = "$brightblue" ] && FG_COMMAND="setterm -foreground brightblue"
+[ "$foreground" = "$brightyellow" ] && FG_COMMAND="setterm -foreground brightyellow"
+[ "$foreground" = "$brightmagenta" ] && FG_COMMAND="setterm -foreground brightmagenta"
+[ "$foreground" = "$brightcyan" ] && FG_COMMAND="setterm -foreground brightcyan"
+[ -z "$FG_COMMAND" ] && white=$foreground
+
+[ "$background" = "$black" ] && BG_COMMAND="setterm -background black"
+[ "$background" = "$white" ] && BG_COMMAND="setterm -background white"
+[ "$background" = "$red" ] && BG_COMMAND="setterm -background red"
+[ "$background" = "$green" ] && BG_COMMAND="setterm -background green"
+[ "$background" = "$blue" ] && BG_COMMAND="setterm -background blue"
+[ "$background" = "$yellow" ] && BG_COMMAND="setterm -background yellow"
+[ "$background" = "$magenta" ] && BG_COMMAND="setterm -background magenta"
+[ "$background" = "$cyan" ] && BG_COMMAND="setterm -background cyan"
+[ "$background" = "$brightblack" ] && BG_COMMAND="setterm -background brightblack"
+[ "$background" = "$brightwhite" ] && BG_COMMAND="setterm -background brightwhite"
+[ "$background" = "$brightred" ] && BG_COMMAND="setterm -background brightred"
+[ "$background" = "$brightgreen" ] && BG_COMMAND="setterm -background brightgreen"
+[ "$background" = "$brightblue" ] && BG_COMMAND="setterm -background brightblue"
+[ "$background" = "$brightyellow" ] && BG_COMMAND="setterm -background brightyellow"
+[ "$background" = "$brightmagenta" ] && BG_COMMAND="setterm -background brightmagenta"
+[ "$background" = "$brightcyan" ] && BG_COMMAND="setterm -background brightcyan"
+[ -z "$BG_COMMAND" ] && black=$background
+
+echo "$BG_COMMAND"
+echo "$FG_COMMAND"
+echo "black=$black"
+echo "white=$white"
+echo "red=$red"
+echo "green=$green"
+echo "blue=$blue"
+echo "yellow=$yellow"
+echo "magenta=$magenta"
+echo "cyan=$cyan"
+echo "brightblack=$brightblack"
+echo "brightwhite=$brightwhite"
+echo "brightred=$brightred"
+echo "brightgreen=$brightgreen"
+echo "brightblue=$brightblue"
+echo "brightyellow=$brightyellow"
+echo "brightmagenta=$brightmagenta"
+echo "brightcyan=$brightcyan"
