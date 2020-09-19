@@ -1,0 +1,5 @@
+#!/bin/sh
+
+grep -Ei "black|blue|cyan|green|purple|red|white|yellow|background" $1 \
+| tr [:upper:] [:lower:] | sed -e s/\"//g -e "s/ //g" -e s/:#/=/g -e s/,//g    \
+-e s/purple/magenta/g -e /black=/d -e s/background/black/g
