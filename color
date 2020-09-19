@@ -1,0 +1,73 @@
+#!/bin/bash
+
+# This script is for changing the linux colorscheme in a simpler manner, using
+# simple and readable hex color values, and converting them to setvtrgb-able 
+# format. These are taken from the $COLORS_DIR variable, with a "color=hex"
+# format (without hash symbol).
+
+# Colors:
+
+# black, red, green, yellow, blue, magenta, cyan, white, brightblack, brightred,
+# brightgreen, brightyellow, brightblue, brightmagenta, brightcyan, brightwhite.
+
+# Example file (solarized theme)
+
+# black=002b36
+# blue=268bd2
+# cyan=2aa198
+# green=859900
+# magenta=d33682
+# red=dc322f
+# white=eee8d5
+# yellow=b58900
+# brightblack=002b36
+# brightblue=839496
+# brightcyan=93a1a1
+# brightgreen=586e75
+# brightmagenta=6c71c4
+# brightred=cb4b16
+# brightwhite=fdf6e3
+# brightyellow=657b83
+
+. $COLORS_DIR/$1
+
+[ "${#black}" != 6 ] && echo "File invalid (black)" && exit 1
+[ "${#red}" != 6 ] && echo "File invalid (red)" && exit 1
+[ "${#green}" != 6 ] && echo "File invalid (green)" && exit 1
+[ "${#yellow}" != 6 ] && echo "File invalid (yellow)" && exit 1
+[ "${#blue}" != 6 ] && echo "File invalid (blue)" && exit 1
+[ "${#magenta}" != 6 ] && echo "File invalid (magenta)" && exit 1
+[ "${#cyan}" != 6 ] && echo "File invalid (cyan)" && exit 1
+[ "${#white}" != 6 ] && echo "File invalid (white)" && exit 1
+[ "${#brightblack}" != 6 ] && echo "File invalid (brightblack)" && exit 1
+[ "${#brightred}" != 6 ] && echo "File invalid (brightred)" && exit 1
+[ "${#brightgreen}" != 6 ] && echo "File invalid (brightgreen)" && exit 1
+[ "${#brightyellow}" != 6 ] && echo "File invalid (brightyellow)" && exit 1
+[ "${#brightblue}" != 6 ] && echo "File invalid (brightblue)" && exit 1
+[ "${#brightmagenta}" != 6 ] && echo "File invalid (brightmagenta)" && exit 1
+[ "${#brightcyan}" != 6 ] && echo "File invalid (brightcyan)" && exit 1
+[ "${#brightwhite}" != 6 ] && echo "File invalid (brightwhite)" && exit 1
+
+black_r=$((0x${black:0:2})); black_g=$((0x${black:2:2})); black_b=$((0x${black:4:2}))
+red_r=$((0x${red:0:2})); red_g=$((0x${red:2:2})); red_b=$((0x${red:4:2}))
+green_r=$((0x${green:0:2})); green_g=$((0x${green:2:2})); green_b=$((0x${green:4:2}))
+yellow_r=$((0x${yellow:0:2})); yellow_g=$((0x${yellow:2:2})); yellow_b=$((0x${yellow:4:2}))
+blue_r=$((0x${blue:0:2})); blue_g=$((0x${blue:2:2})); blue_b=$((0x${blue:4:2}))
+magenta_r=$((0x${magenta:0:2})); magenta_g=$((0x${magenta:2:2})); magenta_b=$((0x${magenta:4:2}))
+cyan_r=$((0x${cyan:0:2})); cyan_g=$((0x${cyan:2:2})); cyan_b=$((0x${cyan:4:2}))
+white_r=$((0x${white:0:2})); white_g=$((0x${white:2:2})); white_b=$((0x${white:4:2}))
+brightblack_r=$((0x${brightblack:0:2})); brightblack_g=$((0x${brightblack:2:2})); brightblack_b=$((0x${brightblack:4:2}))
+brightred_r=$((0x${brightred:0:2})); brightred_g=$((0x${brightred:2:2})); brightred_b=$((0x${brightred:4:2}))
+brightgreen_r=$((0x${brightgreen:0:2})); brightgreen_g=$((0x${brightgreen:2:2})); brightgreen_b=$((0x${brightgreen:4:2}))
+brightyellow_r=$((0x${brightyellow:0:2})); brightyellow_g=$((0x${brightyellow:2:2})); brightyellow_b=$((0x${brightyellow:4:2}))
+brightblue_r=$((0x${brightblue:0:2})); brightblue_g=$((0x${brightblue:2:2})); brightblue_b=$((0x${brightblue:4:2}))
+brightmagenta_r=$((0x${brightmagenta:0:2})); brightmagenta_g=$((0x${brightmagenta:2:2})); brightmagenta_b=$((0x${brightmagenta:4:2}))
+brightcyan_r=$((0x${brightcyan:0:2})); brightcyan_g=$((0x${brightcyan:2:2})); brightcyan_b=$((0x${brightcyan:4:2}))
+brightwhite_r=$((0x${brightwhite:0:2})); brightwhite_g=$((0x${brightwhite:2:2})); brightwhite_b=$((0x${brightwhite:4:2}))
+
+COLORS_R="$black_r,$red_r,$green_r,$yellow_r,$blue_r,$magenta_r,$cyan_r,$white_r,$brightblack_r,$brightred_r,$brightgreen_r,$brightyellow_r,$brightblue_r,$brightmagenta_r,$brightcyan_r,$brightwhite_r"
+COLORS_G="$black_g,$red_g,$green_g,$yellow_g,$blue_g,$magenta_g,$cyan_g,$white_g,$brightblack_g,$brightred_g,$brightgreen_g,$brightyellow_g,$brightblue_g,$brightmagenta_g,$brightcyan_g,$brightwhite_g"
+COLORS_B="$black_b,$red_b,$green_b,$yellow_b,$blue_b,$magenta_b,$cyan_b,$white_b,$brightblack_b,$brightred_b,$brightgreen_b,$brightyellow_b,$brightblue_b,$brightmagenta_b,$brightcyan_b,$brightwhite_b"
+
+
+echo -e "${COLORS_R}\n${COLORS_G}\n${COLORS_B}" | setvtrgb -
