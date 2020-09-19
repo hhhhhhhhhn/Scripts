@@ -29,7 +29,11 @@
 # brightwhite=fdf6e3
 # brightyellow=657b83
 
-. $COLORS_DIR/$1
+[ -z "$1" ] \
+	&& ls -1 $COLORS_DIR > /tmp/mmenu && mmenu "Select Theme: " && FILE=$(</tmp/mmenu) \
+	|| FILE=$1
+
+. "$COLORS_DIR/$FILE"
 
 [ "${#black}" != 6 ] && echo "File invalid (black)" && exit 1
 [ "${#red}" != 6 ] && echo "File invalid (red)" && exit 1
