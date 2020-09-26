@@ -1,0 +1,5 @@
+#!/bin/bash
+
+chord="$(echo $1 | sed 's/#/%23/')"
+wget -q -O - "https://scales-chords.com/chord/piano/$chord" | grep -o "http.*.jpg" | head -n 1 | xargs wget -q -O /tmp/chord.jpg
+xdg-open /tmp/chord.jpg
