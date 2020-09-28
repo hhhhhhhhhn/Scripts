@@ -1,12 +1,12 @@
 #!/bin/bash
 
-[ -z $1 ] && THROWS=1 || THROWS=$1
+[ -z "$1" ] && THROWS=1 || THROWS="$1"
 
 TOTAL=0
 
-for n in $(seq $THROWS); do
-	NUMBER=$(shuf -i 1-6 -n 1)
-	TOTAL=$(expr $TOTAL + $NUMBER)
+for _ in $(seq "$THROWS"); do
+	NUMBER="$(shuf -i 1-6 -n 1)"
+	TOTAL=$((TOTAL + NUMBER))
 	case $NUMBER in
 		1)
 			ROW1="${ROW1} -----"
@@ -48,4 +48,4 @@ for n in $(seq $THROWS); do
 done
 
 echo -e "$ROW1\n$ROW2\n$ROW3\n$ROW4\n$ROW5"
-echo "Total: ${TOTAL}"
+echo "Total: $TOTAL"

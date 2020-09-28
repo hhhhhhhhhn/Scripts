@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 TIMESTAMP=$(date +%s)
 SAVE_DIR=~/Vids/rec-${TIMESTAMP}

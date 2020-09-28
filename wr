@@ -2,6 +2,6 @@
 
 # This scripts opens up your editor to write markdown, and finally copies it
 
-echo "" > /tmp/wr.md && $EDITOR /tmp/wr.md && cat /tmp/wr.md \
+echo "" > /tmp/wr.md && $EDITOR /tmp/wr.md && <"/tmp/wr.md" \
 | pandoc -f markdown -t html\
 | xclip -t text/html -selection clipboard
