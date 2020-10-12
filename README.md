@@ -23,3 +23,6 @@ mmenu, and need them to work to varying extent.
 - wr: Opens up your editor for writing markdown, and copies it as html. Needs
   pandoc.
 - yf: yank file, if markdown as html.
+- yt: see youtube videos
+- ytdl: update youtube videos. YT\_FILE (subscription manager OPML file) and
+  YT\_DIR (directory for files) enviroment variables must be set.
