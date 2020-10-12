@@ -2,10 +2,11 @@
 
 [ -z $YT_DIR ] && echo "Please set env YT_DIR" && exit 1
 
-[ -z $YT_COMMAND ] && \
-	YT_DL='nohup youtube-dl -f "best[height<=720]" {} -qo '
+[ -z $YT_DL ] && \
+	YT_DL='nohup youtube-dl -f "best[height<=720]" {} -qo ' &&
 	YT_DL+='"$YT_DIR/%(uploader)s - %(title)s.%(ext)s" >/dev/null 2>&1 &'
-	YT_WATCH+='mpv "--ytdl-format=[height<=720]" {}'
+
+[-z $YT_WATCH] && YT_WATCH='mpv "--ytdl-format=[height<=720]" {}'
 
 IFS='\n'
 

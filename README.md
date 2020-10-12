@@ -26,3 +26,4 @@ mmenu, and need them to work to varying extent.
 - yt: see youtube videos
 - ytdl: update youtube videos. YT\_FILE (subscription manager OPML file) and
   YT\_DIR (directory for files) enviroment variables must be set.
+- ytoff: see downloaded youtube videos
