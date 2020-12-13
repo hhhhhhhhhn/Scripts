@@ -1,0 +1,26 @@
+#!/bin/sh
+
+CICLE_PHASE="work"
+CICLES=0
+PHASE_END=`date +%s --date='25 minutes'`
+
+new_cicle() {
+	beep
+	[ "$CICLES" = "2" ] && [ $CICLE_PHASE = "work" ] && CICLE_PHASE="rest" \
+		&& PHASE_END=`date +%s --date='35 minutes'` && CICLES=0 && return
+	[ "$CICLE_PHASE" = "work" ] && CICLE_PHASE="rest" \
+		&& PHASE_END=`date +%s --date='5 minutes'` && return
+	[ "$CICLE_PHASE" = "rest" ] && CICLE_PHASE="work" \
+		&& PHASE_END=`date +%s --date='25 minutes'` \
+		&& CICLES=`expr $CICLES + 1`
+}
+
+while true; do
+	CURRENT_TIME=`date +%s`
+	[ "$CURRENT_TIME" -gt "$PHASE_END" ] && new_cicle
+	TIME_LEFT=`expr $PHASE_END - $CURRENT_TIME`
+	echo -ne "\r"
+	echo -n "$CICLE_PHASE "
+	echo -n `date "-d@${TIME_LEFT}" -u +%M:%S`
+	sleep 1
+done

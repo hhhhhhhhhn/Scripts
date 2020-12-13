@@ -16,6 +16,7 @@ mmenu, and need them to work to varying extent.
 - font: Sets tty font size, needs tamsyn font.
 - note [NOTEPAD]: Take a timestampled markdown note, see my bbn repo for more
   info.
+- pomodoro: Simple pomodoro timer.
 - record: Opens up mtm, and records with asciinema and arecord.
 - roll [AMOUNT]: Rolls and displays dice.
 - todo [TEXT...]: If text is given, adds it to todo list. Else, displays it.
