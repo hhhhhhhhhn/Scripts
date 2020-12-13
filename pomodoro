@@ -5,7 +5,7 @@ CICLES=0
 PHASE_END=`date +%s --date='25 minutes'`
 
 new_cicle() {
-	beep
+	aplay /dev/random -r 128000 -d 2 -q &
 	[ "$CICLES" = "2" ] && [ $CICLE_PHASE = "work" ] && CICLE_PHASE="rest" \
 		&& PHASE_END=`date +%s --date='35 minutes'` && CICLES=0 && return
 	[ "$CICLE_PHASE" = "work" ] && CICLE_PHASE="rest" \
