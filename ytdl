@@ -15,8 +15,6 @@ output=""
 	&& last_update=$(cat "$YT_DIR/last_update") \
 	|| last_update=0
 
-date "+%s" > $YT_DIR/last_update
-
 for file in $YT_DIR/xml/*; do
 	IFS=$'\n' titles=($(pcregrep -o1 "<title>(.*)<\/title>" "$file"))
 	dates=($(pcregrep -o1 "<published>(.*)<\/published>" "$file"))
@@ -35,3 +33,5 @@ done
 cat <(echo -e "$output\c" | sort -r ; cat "$YT_DIR/videos") > /tmp/ytdl
 rm "$YT_DIR/videos"
 cp /tmp/ytdl "$YT_DIR/videos"
+
+date "+%s" > $YT_DIR/last_update
