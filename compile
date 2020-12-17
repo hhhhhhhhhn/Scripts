@@ -1,0 +1,9 @@
+#!/bin/sh
+
+[ -f ./Makefile ] && make && exit 0
+
+case $1 in
+	*.md) pandoc -f markdown -t pdf $1;;
+	*.ms) groff -ms -e $1;;
+	*) echo "Couldn't parse format" && exit 1;;
+esac

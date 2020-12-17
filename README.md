@@ -8,13 +8,16 @@ mmenu, and need them to work to varying extent.
 
 - catcat: Completely useless
 - color COLOSCHEME: Sets linux tty colorschemes with easy to read files.
-  Read the comments in the beggining to read more. Probably the most usefull
+  Read the comments in the beggining to read more. Probably the most useful
   script in the repo.
 - wtconverter FILE: Converts a Windows Terminal theme to one compatible with
   the "color" script.
+- compile [FILE]: Compiles different types of files (WIP).
 - flip: Flips a coin.
 - font: Sets tty font size, needs tamsyn font.
-- note [NOTEPAD]: Take a timestampled markdown note, see my bbn repo for more
+- img [KEYWORDS...]: Uses sxiv and googliser to search images in the internet,
+  select them and copy them to the clipboard. Rather slow.
+- note [NOTEPAD]: Take a timestamped markdown note, see my bbn repo for more
   info.
 - pomodoro: Simple pomodoro timer.
 - record: Opens up mtm, and records with asciinema and arecord.
