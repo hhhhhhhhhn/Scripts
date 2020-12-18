@@ -22,6 +22,7 @@ mmenu, and need them to work to varying extent.
 - pomodoro: Simple pomodoro timer.
 - record: Opens up mtm, and records with asciinema and arecord.
 - roll [AMOUNT]: Rolls and displays dice.
+- rb: Reads text from stdin and applies rainbow effect, line by line.
 - todo [TEXT...]: If text is given, adds it to todo list. Else, displays it.
 - view [NOTEPAD]: Displays an entire notepad.
 - wr: Opens up your editor for writing markdown, and copies it as html. Needs
