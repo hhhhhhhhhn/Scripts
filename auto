@@ -1,0 +1,4 @@
+#!/bin/sh
+pkill entr && echo "Stopped watching" && exit 0
+echo "Started watching"
+echo "$1" | entr compile "$1" & disown

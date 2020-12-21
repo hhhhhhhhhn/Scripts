@@ -3,7 +3,7 @@
 [ -f ./Makefile ] && make && exit 0
 
 case $1 in
-	*.md) pandoc -f markdown -t pdf $1;;
-	*.ms) groff -ms -e $1;;
+	*.md) pandoc -f markdown -t pdf "$1" -o "$1.pdf";;
+	*.ms) groff -ms -e $1 -Tpdf > "$1.pdf";;
 	*) echo "Couldn't parse format" && exit 1;;
 esac

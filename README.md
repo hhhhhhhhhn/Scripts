@@ -13,8 +13,10 @@ mmenu, and need them to work to varying extent.
 - wtconverter FILE: Converts a Windows Terminal theme to one compatible with
   the "color" script.
 - compile [FILE]: Compiles different types of files (WIP).
+- auto FILE: Toggles automatic compiling for a file.
 - flip: Flips a coin.
 - font: Sets tty font size, needs tamsyn font.
+- gmenu: Uses your terminal for choosing a line from stdin (similar to dmenu).
 - img [KEYWORDS...]: Uses sxiv and googliser to search images in the internet,
   select them and copy them to the clipboard. Rather slow.
 - note [NOTEPAD]: Take a timestamped markdown note, see my bbn repo for more
@@ -23,6 +25,7 @@ mmenu, and need them to work to varying extent.
 - record: Opens up mtm, and records with asciinema and arecord.
 - roll [AMOUNT]: Rolls and displays dice.
 - rb: Reads text from stdin and applies rainbow effect, line by line.
+- run: Opens gmenu prompt to run a program.
 - todo [TEXT...]: If text is given, adds it to todo list. Else, displays it.
 - view [NOTEPAD]: Displays an entire notepad.
 - wr: Opens up your editor for writing markdown, and copies it as html. Needs

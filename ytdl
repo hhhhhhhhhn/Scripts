@@ -5,15 +5,15 @@ TH=8 # Threads
 [ -z "$YT_FILE" ] && echo "Please set env YT_FILE" && exit 1
 [ -z "$YT_DIR" ] && echo "Please set env YT_DIR" && exit 1
 
-rm -f "$YT_DIR/xml/*"
+rm -rf "$YT_DIR/xml/"
+mkdir "$YT_DIR/xml"
 
-grep -o 'http[^"]*' "$YT_FILE" | xargs -n 1 -P $TH wget -q -c -P "$YT_DIR/xml/"
+grep -o 'http[^"]*' "$YT_FILE" | xargs -n 1 -P $TH wget --no-cache -q -c -P "$YT_DIR/xml/"
 
 output=""
 
-[ -f "$YT_DIR/last_update" ] \
-	&& last_update=$(cat "$YT_DIR/last_update") \
-	|| last_update=0
+last_update="$(cat "$YT_DIR/last_update" || echo 0)"
+echo "$(date +%s)" > "$YT_DIR/last_update"
 
 for file in $YT_DIR/xml/*; do
 	IFS=$'\n' titles=($(pcregrep -o1 "<title>(.*)<\/title>" "$file"))
@@ -25,13 +25,10 @@ for file in $YT_DIR/xml/*; do
 		timestamp=$(date --date="${dates[$i]}" +%s)
 		title=${titles[$i]//|/-}
 		link=${links[$i]}
-		[ "$timestamp" -gt "$last_update" ] \
-			&& output+="$timestamp|$channel|$title|$link\n"
+		[ "$timestamp" -gt "$last_update" ] && \
+			output+="$timestamp|$channel|$title|$link\n"
 	done
 done
 
-cat <(echo -e "$output\c" | sort -r ; cat "$YT_DIR/videos") > /tmp/ytdl
-rm "$YT_DIR/videos"
-cp /tmp/ytdl "$YT_DIR/videos"
-
-date "+%s" > $YT_DIR/last_update
+cat <(echo -e "$output\c" | sort -r) "$YT_DIR/videos" > /tmp/ytdl
+cat /tmp/ytdl > "$YT_DIR/videos"

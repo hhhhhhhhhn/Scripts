@@ -1,7 +1,7 @@
 #!/bin/sh
 
 rm -rf /tmp/imgscript
-googliser -s -r 0 -t 10 -n 15 -o /tmp/imgscript -p "$@"
+googliser -s -r 0 -t 10 -n 15 -o /tmp/imgscript -p `echo "$@" | tr " " _`
 sxiv -ot /tmp/imgscript/ | sed -E "s/^.*\(//;s/\).*$//" \
 	| xargs -I {} sed "{}q;d" /tmp/imgscript/image.links.list \
-	| xclip -selection clipboard
+	| xclip -selection primary
