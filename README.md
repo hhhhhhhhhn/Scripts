@@ -17,8 +17,8 @@ mmenu, and need them to work to varying extent.
 - flip: Flips a coin.
 - font: Sets tty font size, needs tamsyn font.
 - gmenu: Uses your terminal for choosing a line from stdin (similar to dmenu).
-- img [KEYWORDS...]: Uses sxiv and googliser to search images in the internet,
-  select them and copy them to the clipboard. Rather slow.
+- img [KEYWORDS...]: Uses sxiv to search images in the internet,
+  select them and copy them to the clipboard.
 - note [NOTEPAD]: Take a timestamped markdown note, see my bbn repo for more
   info.
 - pomodoro: Simple pomodoro timer.
