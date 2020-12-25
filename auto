@@ -1,4 +1,4 @@
 #!/bin/sh
 pkill entr && echo "Stopped watching" && exit 0
 echo "Started watching"
-echo "$1" | entr compile "$1" & disown
+find "$1" -follow -type f | entr compile "$1" 2>/dev/null 1>/dev/null & disown

@@ -8,8 +8,7 @@ mmenu, and need them to work to varying extent.
 
 - catcat: Completely useless
 - color COLOSCHEME: Sets linux tty colorschemes with easy to read files.
-  Read the comments in the beggining to read more. Probably the most useful
-  script in the repo.
+  Read the comments in the beggining to read more.
 - wtconverter FILE: Converts a Windows Terminal theme to one compatible with
   the "color" script.
 - compile [FILE]: Compiles different types of files (WIP).
