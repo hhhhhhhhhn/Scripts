@@ -20,6 +20,7 @@ while [ "$BREAK" = "false" ]; do
 	echo "previous page" > /tmp/mmenu
 	sed -n "$index,$((index + rows - 5))p" "$YT_DIR/videos" \
 		| sed -e "s/|http.*$//" -e "s/^[0-9]*|//" \
+		-e "s/&quot;/\"/g" -e "s/amp;//g" \
 		| column -tO 2,1 -s "|" -T 0,1,2 -W 0,1,2 -c $cols \
 		| tee /tmp/YT >> /tmp/mmenu
 	echo -e "next page\nrefresh videos" >> /tmp/mmenu
