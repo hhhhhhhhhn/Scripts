@@ -24,7 +24,7 @@ mmenu, and need them to work to varying extent.
 - record: Opens up mtm, and records with asciinema and arecord.
 - roll [AMOUNT]: Rolls and displays dice.
 - rb: Reads text from stdin and applies rainbow effect, line by line.
-- run: Opens gmenu prompt to run a program.
+- redd SUBREDDIT: Displays subreddit images from sxiv.
 - todo [TEXT...]: If text is given, adds it to todo list. Else, displays it.
 - view [NOTEPAD]: Displays an entire notepad.
 - wr: Opens up your editor for writing markdown, and copies it as html. Needs
@@ -34,3 +34,4 @@ mmenu, and need them to work to varying extent.
 - ytdl: update youtube videos. YT\_FILE (subscription manager OPML file) and
   YT\_DIR (directory for files) enviroment variables must be set.
 - ytoff: see downloaded youtube videos
+- yt-search QUERY: Seaches youtube videos.

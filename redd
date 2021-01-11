@@ -1,0 +1,16 @@
+#!/bin/sh
+
+[ -z $2 ] && amount=50 || amount=$2
+threads=10
+
+rm -rf /tmp/redd
+mkdir /tmp/redd
+
+wget --header="User-Agent: Mozilla/5.0 (Windows NT 6.0) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.97 Safari/537.11" "https://www.reddit.com/r/$1/hot.json?limit=$amount" -q -O - \
+	| grep -Eo '"url": "http[^"]*\.(jpg|png|gif|jpeg)' | sort -u \
+	| grep -Ev '(redditstatic|award_images)' | sed 's/"url": "//' > /tmp/rurls
+
+cat /tmp/rurls | xargs -n 1 -P "$threads" -I{} \
+	wget -qcP "/tmp/redd/" --timeout 10 --tries 1 "{}" 2>/dev/null
+
+sxiv -a "/tmp/redd/"
