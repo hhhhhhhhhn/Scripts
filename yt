@@ -24,7 +24,7 @@ while [ "$BREAK" = "false" ]; do
 		| column -tO 2,1 -s "|" -T 0,1,2 -W 0,1,2 -c $cols \
 		| tee /tmp/YT >> /tmp/mmenu
 	echo -e "next page\nrefresh videos" >> /tmp/mmenu
-	mmenu "Page $(((index+rows+30)/rows)): " t && selection="$(cat /tmp/mmenu)"
+	selection=`</tmp/mmenu mmenu "Page $(((index+rows+30)/rows)): " t`
 
 	case "$selection" in
 		"0")

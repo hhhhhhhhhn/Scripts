@@ -1,4 +1,0 @@
-#!/bin/sh
-cat > /tmp/mmenu
-$TERMINAL -e mmenu
-cat /tmp/mmenu

@@ -1,0 +1,8 @@
+#!/bin/sh
+
+[ -z $1 ] && echo Please provide filename && exit 1
+
+threads=2
+
+sed "s/['\\]//g" "$1" | xargs -P "$threads" -I{} \
+	youtube-dl -f 'bestaudio[ext=m4a]' "ytsearch:{}"

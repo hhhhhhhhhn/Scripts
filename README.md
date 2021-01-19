@@ -15,7 +15,6 @@ mmenu, and need them to work to varying extent.
 - auto FILE: Toggles automatic compiling for a file.
 - flip: Flips a coin.
 - font: Sets tty font size, needs tamsyn font.
-- gmenu: Uses your terminal for choosing a line from stdin (similar to dmenu).
 - img [KEYWORDS...]: Uses sxiv to search images in the internet,
   select them and copy them to the clipboard.
 - note [NOTEPAD]: Take a timestamped markdown note, see my bbn repo for more
@@ -34,4 +33,4 @@ mmenu, and need them to work to varying extent.
 - ytdl: update youtube videos. YT\_FILE (subscription manager OPML file) and
   YT\_DIR (directory for files) enviroment variables must be set.
 - ytoff: see downloaded youtube videos
-- yt-search QUERY: Seaches youtube videos.
+- yts QUERY: Seaches youtube videos.

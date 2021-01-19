@@ -11,8 +11,20 @@ wget --header="User-Agent: Mozilla/5.0 (Windows NT 6.0) AppleWebKit/537.11 (KHTM
 	> /tmp/ytsearch
 
 grep -Eo '"title":{"runs":\[{"text":"[^"]*' /tmp/ytsearch \
-	| sed 's/"title":{"runs":\[{"text":"//' | head -n $amount > /tmp/ytsearchtitles
+	| sed 's/"title":{"runs":\[{"text":"//' | head -n $amount \
+	| cut -c -70 > /tmp/ytsearchtitles
 
 grep -Eo 'v=[^"]*' /tmp/ytsearch | tail -n +3 | head -n $amount \
 	| sed 's|^|https://youtube.com/watch?|' | paste -d "|" /tmp/ytsearchtitles - \
-	| column -t -s "|"
+	| column -t -s "|" | mmenu > /tmp/mmenu
+
+url=`grep -o 'https:.*' /tmp/mmenu`
+
+[ -z "$url" ] && exit 1
+
+echo "Watch now? (n)"
+read answer
+
+[ "$answer" = "y" ] && mpv "--ytdl-format=[height<=720]" "$url"
+[ "$answer" != "y" ] && nohup youtube-dl -f "best[height<=720]" "$url" -qo \
+	"$YT_DIR/%(uploader)s - %(title)s.%(ext)s" >/dev/null 2>&1 &
