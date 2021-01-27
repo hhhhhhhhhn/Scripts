@@ -34,3 +34,9 @@ mmenu, and need them to work to varying extent.
   YT\_DIR (directory for files) enviroment variables must be set.
 - ytoff: see downloaded youtube videos
 - yts QUERY: Seaches youtube videos.
+
+## Note
+As mmenu does not seem to work in some systems (e.g. Termux), I've included the
+fake-mmenu script, which simulates the interface with fzf. To install it, copy
+it to a dir in PATH (like /usr/bin, or in termux /data/data/com.termuxfiles/usr/bin)
+with the name mmenu.
