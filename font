@@ -1,20 +1,33 @@
 #!/bin/sh
 
+fontsize=`sudo showconsolefont -i | cut -dx -f2`
+
+echo $@ | grep -- -b && type="b" || type="n"
+echo $@ | grep -- -d && duplicate="-d"
+
+function prev() {
+	echo -e "12\n14\n16\n18\n20\n22\n24\n28\n32" \
+		| grep -B1 $fontsize | head -n1
+}
+
+function next() {
+	echo -e "12\n14\n16\n18\n20\n22\n24\n28\n32" \
+		| grep -A1 $fontsize | tail -n1
+}
+
 case "$1" in
-	0|min)
-		setfont Tamsyn5x9r;;
-	1)
-		setfont Tamsyn6x12r;;
-	2)
-		setfont Tamsyn7x13r;;
-	3)
-		setfont Tamsyn7x14r;;
-	4)
-		setfont Tamsyn8x15r;;
-	5)
-		setfont Tamsyn8x16r;;
-	6|max)
-		setfont Tamsyn10x20r;;
+	"")
+		size=16;;
+	min)
+		size=12;;
+	max)
+		size=32;;
+	+)
+		size=`next`;;
+	-)
+		size=`prev`;;
 	*)
-		setfont Tamsyn8x16r;;
+		size="$1";;
 esac
+
+sudo setfont "ter-9${size}${type}"  ${duplicate}
