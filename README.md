@@ -14,7 +14,10 @@ mmenu, and need them to work to varying extent.
 - compile [FILE]: Compiles different types of files (WIP).
 - auto FILE: Toggles automatic compiling for a file.
 - flip: Flips a coin.
-- font: Sets tty font size, needs tamsyn font.
+- font min|max|+|-|=|n: Sets tty font size, needs terminus font. The argument
+  can be a specific height, min (=12), max (=32), + (increments one size), -
+  (decreases one size), = (keeps the same) or nothing (=16). The FONT\_BOLD
+  and FONT\_DUP enviroment variables control if the font is bold or duplicated.
 - img [KEYWORDS...]: Uses sxiv to search images in the internet,
   select them and copy them to the clipboard.
 - note [NOTEPAD]: Take a timestamped markdown note, see my bbn repo for more
