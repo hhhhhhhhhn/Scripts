@@ -1,0 +1,82 @@
+#!/bin/sh
+
+dialog >/dev/null 2>&1 || sudo pacman --noconfirm -S dialog
+
+COMMAND="sudo pacman --noconfirm"
+
+function main() {
+	while true; do
+		dialog --menu "Select an Option" 0 0 0 \
+			"Exit" "Quit manpac" \
+			"Search" "Look for Programs" \
+			"Manage" "Search for Local Programs" \
+			"Scope" "Currently searching \
+`echo $COMMAND | grep yay >/dev/null && echo All || echo Stable` \
+Programs" --stdout > /tmp/manpac || exit 0
+		
+		case `cat /tmp/manpac` in
+			"Exit")
+				exit 0;;
+			"Search")
+				search_remote `dialog --stdout --inputbox "Enter Query:" 0 0`;;
+			"Manage")
+				search_local `dialog --stdout --inputbox "Enter Query:" 0 0`;;
+			"Scope")
+				echo "$COMMAND" | grep yay >/dev/null \
+					&& COMMAND="sudo pacman --noconfirm" \
+					|| COMMAND="yay --noconfirm"
+		esac
+	done
+}
+
+function search_local() {
+	$COMMAND -Qs "$1" | xargs -d "\n" dialog --menu menu -1 -1 -1 --stdout \
+		> /tmp/manpac
+	show_program `sed </tmp/manpac -e 's|.*/||' -e 's|\s.*||'`
+}
+
+function search_remote() {
+	[ -z "$1" ] && return
+	$COMMAND -Ss "$1" | xargs -d "\n" dialog --menu menu -1 -1 -1 --stdout \
+		> /tmp/manpac
+	show_program `sed </tmp/manpac -e 's|.*/||' -e 's|\s.*||'`
+}
+
+function show_program() {
+	[ -z "$1" ] && return
+	if $COMMAND -Qi "$1" > /tmp/manpac 2>/dev/null; then
+		TYPE=LOCAL
+	elif $COMMAND -Si "$1" > /tmp/manpac; then
+		TYPE=REMOTE
+	else
+		dialog --infobox "Program not Found" 0 0
+		return
+	fi
+
+	dialog --exit-label Actions --textbox /tmp/manpac -1 -1
+
+	program_actions "$1" "$TYPE"
+}
+
+function program_actions() {
+	if [ "$2" = "LOCAL" ]; then
+		dialog --menu "What to do with $1?" 0 0 0 \
+			"Nothing" "Go Back" \
+			"Uninstall" "Remove $1 and its dependencies" --stdout > /tmp/manpac
+	else
+		dialog --menu "What to do with $1?" 0 0 0 \
+			"Nothing" "Go Back" \
+			"Install" "Install $1" --stdout > /tmp/manpac
+	fi
+	
+	case `cat /tmp/manpac` in
+		"Nothing")
+			return;;
+		"Uninstall")
+			dialog --prgbox "$COMMAND -Rns $1" -1 -1;;
+		"Install")
+			dialog --prgbox "$COMMAND -S $1" -1 -1;;
+	esac
+}
+
+main
