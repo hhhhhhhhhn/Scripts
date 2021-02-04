@@ -8,6 +8,7 @@ function main() {
 	while true; do
 		dialog --menu "Select an Option" 0 0 0 \
 			"Exit" "Quit manpac" \
+			"Update" "Full System Upgrade" \
 			"Search" "Look for Programs" \
 			"Manage" "Search for Local Programs" \
 			"Scope" "Currently searching \
@@ -17,6 +18,8 @@ Programs" --stdout > /tmp/manpac || exit 0
 		case `cat /tmp/manpac` in
 			"Exit")
 				exit 0;;
+			"Update")
+				dialog --prgbox "$COMMAND -Syu" -1 -1;;
 			"Search")
 				search_remote `dialog --stdout --inputbox "Enter Query:" 0 0`;;
 			"Manage")

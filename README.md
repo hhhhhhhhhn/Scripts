@@ -6,7 +6,7 @@ mmenu, and need them to work to varying extent.
 
 ## List
 
-- manpac: A friendly frontend for pacman made with dialog.
+- manpac: A friendly frontend for pacman+yay made with dialog.
 - catcat: Completely useless
 - color COLOSCHEME: Sets linux tty colorschemes with easy to read files.
   Read the comments in the beggining to read more.
