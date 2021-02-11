@@ -2,6 +2,8 @@
 
 [ -z "$TODO_FILE" ] && echo "Please set TODO_FILE enviroment variable." && exit 1
 
-[ -z "$1" ] && <$TODO_FILE mmenu "Completed: " | xargs -I @ sed -i '0,/^@$/{//d}' "$TODO_FILE"
+[ -z "$1" ] && <$TODO_FILE mmenu "Completed: " | tr "/" "|" | xargs -I @ sed -i '0,/^@$/{//d}' "$TODO_FILE"
 
-[ -n "$1" ] && echo "$@" >> "$TODO_FILE" && sort "$TODO_FILE" -o "$TODO_FILE"
+[ -n "$1" ] && echo "$@" | tr "/" "|" >> "$TODO_FILE" && sort "$TODO_FILE" -o "$TODO_FILE"
+ 
+exit 0
