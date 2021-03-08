@@ -28,6 +28,8 @@ mmenu, and need them to work to varying extent.
 - roll [AMOUNT]: Rolls and displays dice.
 - rb: Reads text from stdin and applies rainbow effect, line by line.
 - redd SUBREDDIT: Displays subreddit images from sxiv.
+- run: Opens up mmenu promp to run a command/alias.
+- gmenu: Opens "run" in a new terminal.
 - todo [TEXT...]: If text is given, adds it to todo list. Else, displays it.
 - view [NOTEPAD]: Displays an entire notepad.
 - wr: Opens up your editor for writing markdown, and copies it as html. Needs
