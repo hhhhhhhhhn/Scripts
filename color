@@ -30,8 +30,7 @@
 # brightyellow=657b83
 
 [ -z "$1" ] \
-	&& ls -1 $COLORS_DIR > /tmp/mmenu && mmenu "Select Theme: " && FILE=$(</tmp/mmenu) \
-	|| FILE=$1
+	&& echo "Please enter theme" && exit 1
 
 . "$COLORS_DIR/$FILE"
 

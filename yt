@@ -17,14 +17,16 @@ cols="$(tput cols)"
 BREAK="false"
 
 while [ "$BREAK" = "false" ]; do
-	echo "previous page" > /tmp/mmenu
+	echo "previous page" > /tmp/yt
 	sed -n "$index,$((index + rows - 5))p" "$YT_DIR/videos" \
 		| sed -e "s/|http.*$//" -e "s/^[0-9]*|//" \
 		-e "s/&quot;/\"/g" -e "s/amp;//g" \
 		| column -tO 2,1 -s "|" -T 0,1,2 -W 0,1,2 -c $cols \
-		| tee /tmp/YT >> /tmp/mmenu
-	echo -e "next page\nrefresh videos" >> /tmp/mmenu
-	selection=`</tmp/mmenu mmenu "Page $(((index+rows+30)/rows)): " t`
+		| tee /tmp/YT >> /tmp/yt
+	echo -e "next page\nrefresh videos" >> /tmp/yt
+	video=`</tmp/yt fzy -l max -p "Page $(((index+rows+30)/rows)): "`
+	selection=`grep -n "$video" /tmp/yt | cut -d ":" -f 1`
+	selection=`expr $selection - 1`
 
 	case "$selection" in
 		"0")

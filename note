@@ -2,7 +2,8 @@
 
 [ -z "$NOTES_DIR" ] || [ ! -d "$NOTES_DIR" ] && echo "NOTES_DIR enviroment variable doesn't exist or is not a directory." && exit 1
 
-[ -z "$1" ] && find "$NOTES_DIR" -name "*.md" | sed -E "s/.*\/([^\/]*).md$/\1/" | mmenu "Select note: " > /tmp/mmenu && NOTE=$(</tmp/mmenu) || NOTE="$1"
+[ -z "$1" ] && NOTE=$(find "$NOTES_DIR" -name "*.md" | sed -E "s/.*\/([^\/]*).md$/\1/" | fzy -p "Select note:") \
+	|| NOTE="$1"
 
 [ "$NOTE" = "" ] && exit 1
 

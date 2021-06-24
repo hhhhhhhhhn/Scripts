@@ -16,9 +16,9 @@ grep -Eo '"title":{"runs":\[{"text":"[^"]*' /tmp/ytsearch \
 
 grep -Eo 'v=[^"]*' /tmp/ytsearch | tail -n +3 | head -n $amount \
 	| sed 's|^|https://youtube.com/watch?|' | paste -d "|" /tmp/ytsearchtitles - \
-	| column -t -s "|" | mmenu > /tmp/mmenu
+	| column -t -s "|" | fzy > /tmp/ytoff
 
-url=`grep -o 'https:.*' /tmp/mmenu`
+url=`grep -o 'https:.*' /tmp/ytoff`
 
 [ -z "$url" ] && exit 1
 

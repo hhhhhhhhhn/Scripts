@@ -5,6 +5,6 @@ function list_commands() {
 	alias | sed "s/=.*//"
 }
 
-COMMAND="$(list_commands 2>/dev/null | mmenu "run: ")"
+COMMAND="$(list_commands 2>/dev/null | fzy -l max -p "run: ")"
 exec "$COMMAND"
 exit

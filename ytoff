@@ -12,10 +12,10 @@ cols="$(tput cols)"
 BREAK="false"
 
 while [ "$BREAK" = "false" ]; do
-	echo -e "previous page\nnext page" > /tmp/mmenu
+	echo -e "previous page\nnext page" > /tmp/ytoff
 	find "$YT_DIR" -maxdepth 1 -name "*.*" -printf "%f\n" \
-		| sed -n "$index,$((index+rows-5))p" >> /tmp/mmenu
-	selection=`</tmp/mmenu mmenu "Page $(((index+rows+30)/rows)): "`
+		| sed -n "$index,$((index+rows-5))p" >> /tmp/ytoff
+	selection=`</tmp/ytoff fzy -l max -p "Page $(((index+rows+30)/rows)): "`
 
 	case "$selection" in
 		"previous page")

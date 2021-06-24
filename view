@@ -1,5 +1,5 @@
 #!/bin/bash
 
-cd "$NOTES_DIR" && [ -z "$1" ] && ls -1 *.md | sed -e "s/\..*//" | mmenu "Choose a note: " > /tmp/mmenu \
-	&& <"$(</tmp/mmenu).md" mmd | less -R \
+cd "$NOTES_DIR" && [ -z "$1" ] && ls -1 *.md | sed -e "s/\..*//" | fzy -p "Choose a note: " > /tmp/view \
+	&& <"$(</tmp/view).md" mmd | less -R \
 	|| <"${1}.md" mmd | less -R
