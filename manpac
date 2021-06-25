@@ -12,7 +12,7 @@ function main() {
 			"Search" "Look for Programs" \
 			"Manage" "Search for Local Programs" \
 			"Scope" "Currently searching \
-`echo $COMMAND | grep yay >/dev/null && echo All || echo Stable` \
+`echo $COMMAND | grep paru >/dev/null && echo All || echo Stable` \
 Programs" --stdout > /tmp/manpac || exit 0
 		
 		case `cat /tmp/manpac` in
@@ -25,9 +25,9 @@ Programs" --stdout > /tmp/manpac || exit 0
 			"Manage")
 				search_local `dialog --stdout --inputbox "Enter Query:" 0 0`;;
 			"Scope")
-				echo "$COMMAND" | grep yay >/dev/null \
+				echo "$COMMAND" | grep paru >/dev/null \
 					&& COMMAND="sudo pacman --noconfirm" \
-					|| COMMAND="yay --noconfirm"
+					|| COMMAND="paru --noconfirm"
 		esac
 	done
 }
