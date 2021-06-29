@@ -1,26 +1,43 @@
 #!/bin/sh
 
-CICLE_PHASE="work"
+DOING="work"
 CICLES=0
-PHASE_END=`date +%s --date='25 minutes'`
+CYCLE_END=`date +%s`
+CURRENT_TIME=`date +%s`
 
-new_cicle() {
+beep() {
 	aplay /dev/random -r 128000 -d 2 -q &
-	[ "$CICLES" = "2" ] && [ $CICLE_PHASE = "work" ] && CICLE_PHASE="rest" \
-		&& PHASE_END=`date +%s --date='35 minutes'` && CICLES=0 && return
-	[ "$CICLE_PHASE" = "work" ] && CICLE_PHASE="rest" \
-		&& PHASE_END=`date +%s --date='5 minutes'` && return
-	[ "$CICLE_PHASE" = "rest" ] && CICLE_PHASE="work" \
-		&& PHASE_END=`date +%s --date='25 minutes'` \
-		&& CICLES=`expr $CICLES + 1`
 }
 
-while true; do
-	CURRENT_TIME=`date +%s`
-	[ "$CURRENT_TIME" -gt "$PHASE_END" ] && new_cicle
-	TIME_LEFT=`expr $PHASE_END - $CURRENT_TIME`
-	echo -ne "\r"
-	echo -n "$CICLE_PHASE "
+display() {
+	echo -ne "\r$DOING "
+	TIME_LEFT=`expr $CYCLE_END - $CURRENT_TIME`
 	echo -n `date "-d@${TIME_LEFT}" -u +%M:%S`
-	sleep 1
+}
+
+cycle() {
+	CYCLE_END=`date +%s --date="$1 minutes"`
+	while [ "$CYCLE_END" -gt "$CURRENT_TIME" ]; do
+		CURRENT_TIME=`date +%s`
+		display
+		sleep 1
+	done
+	beep
+}
+
+usage() {
+	echo "POMODORO [mins...]"
+	echo "Where mins is the amount of minutes in each cycle"
+	echo "(alternating between work and rest)"
+}
+
+[ "$1" = "-h" ] || [ "$1" = "--help" ] && usage && exit 1
+
+SEQUENCE=`[ -z "$@" ] && echo "25 5 25 5 25 35" || echo "$@"`
+
+while true; do
+	for TIME in $SEQUENCE; do
+		cycle $TIME
+		DOING=`[ "$DOING" = "rest" ] && echo work || echo rest`
+	done
 done
