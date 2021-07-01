@@ -27,6 +27,7 @@ mww, and need them to work to varying extent.
 - rb: Reads text from stdin and applies rainbow effect, line by line.
 - redd SUBREDDIT: Displays subreddit images from sxiv.
 - run: Opens up fzy prompt to run a command/alias.
+- sw: A stopwatch
 - gmenu: Opens "run" in a new terminal.
 - todo [TEXT...]: If text is given, adds it to todo list. Else, displays it.
 - view [NOTEPAD]: Displays an entire notepad.
