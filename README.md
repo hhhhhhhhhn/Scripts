@@ -33,6 +33,7 @@ mww, and need them to work to varying extent.
 - view [NOTEPAD]: Displays an entire notepad.
 - wr: Opens up your editor for writing markdown, and copies it as html. Needs
   pandoc.
+- xwd: Prints the pwd of the shell of the focused X window using xdotool.
 - yf: yank file, if markdown as html.
 - yt: see youtube videos
 - ytdl: update youtube videos. YT\_FILE (subscription manager OPML file) and
