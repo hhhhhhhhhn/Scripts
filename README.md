@@ -30,6 +30,7 @@ mww, and need them to work to varying extent.
 - sw: A stopwatch
 - gmenu: Opens "run" in a new terminal.
 - todo [TEXT...]: If text is given, adds it to todo list. Else, displays it.
+- tmr TIME: Simple timer, in practice an interactive "sleep"
 - view [NOTEPAD]: Displays an entire notepad.
 - wr: Opens up your editor for writing markdown, and copies it as html. Needs
   pandoc.

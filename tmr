@@ -1,0 +1,14 @@
+#!/bin/sh
+TIME=$(echo $1 | grep ":" >/dev/null \
+	&& expr $(echo $1 | cut "-d:" -f1) "*" 60 + $(echo $1 | cut "-d:" -f2) \
+	|| echo $1)
+
+END=$(expr $(date +%s) + $TIME)
+
+while true; do
+	LEFT=$(expr $END - $(date +%s))
+	[ "$LEFT" -lt 0 ] && exit
+	echo -ne "\r"
+	echo -n $(date "-d@${LEFT}" -u +%M:%S)
+	sleep 0.1
+done
