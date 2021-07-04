@@ -29,6 +29,7 @@ mww, and need them to work to varying extent.
 - run: Opens up fzy prompt to run a command/alias.
 - sw: A stopwatch
 - gmenu: Opens "run" in a new terminal.
+- terminxwd: Opens terminal inside the working directory of the focused window.
 - todo [TEXT...]: If text is given, adds it to todo list. Else, displays it.
 - tmr TIME: Simple timer, in practice an interactive "sleep"
 - view [NOTEPAD]: Displays an entire notepad.
@@ -36,8 +37,5 @@ mww, and need them to work to varying extent.
   pandoc.
 - xwd: Prints the pwd of the shell of the focused X window using xdotool.
 - yf: yank file, if markdown as html.
-- yt: see youtube videos
-- ytdl: update youtube videos. YT\_FILE (subscription manager OPML file) and
-  YT\_DIR (directory for files) enviroment variables must be set.
-- ytoff: see downloaded youtube videos
+- yt: see youtube videos - ytdl: update youtube videos. YT\_FILE (subscription manager OPML file) and YT\_DIR (directory for files) enviroment variables must be set.  - ytoff: see downloaded youtube videos
 - yts QUERY: Seaches youtube videos.
