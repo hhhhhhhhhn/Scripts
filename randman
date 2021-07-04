@@ -1,0 +1,2 @@
+#!/bin/sh
+apropos $([ -z "$1" ] && echo "." || echo "$1") | shuf -n 1 | cut -d" " -f1 | xargs man

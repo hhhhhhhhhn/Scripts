@@ -22,7 +22,7 @@ mww, and need them to work to varying extent.
 - note [NOTEPAD]: Take a timestamped markdown note, see my bbn repo for more
   info.
 - pomodoro: Simple pomodoro timer.
-- record: Opens up mtm, and records with asciinema and arecord.
+- randman [QUERY]: Opens a random man page
 - roll [AMOUNT]: Rolls and displays dice.
 - rb: Reads text from stdin and applies rainbow effect, line by line.
 - redd SUBREDDIT: Displays subreddit images from sxiv.
