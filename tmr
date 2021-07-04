@@ -1,4 +1,6 @@
 #!/bin/sh
+[ -z "$1" ] && echo "Enter time in second or minute:second format" && exit 1
+
 TIME=$(echo $1 | grep ":" >/dev/null \
 	&& expr $(echo $1 | cut "-d:" -f1) "*" 60 + $(echo $1 | cut "-d:" -f2) \
 	|| echo $1)
