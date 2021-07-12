@@ -1,0 +1,7 @@
+#!/bin/sh
+
+[ -z "$DICTIONARY" ] \
+	&& echo "Set DICTIONARY enviroment variable to a dictionary text file" \
+	&& exit 2
+
+( grep --color=always -i "^$@" "$DICTIONARY" ; grep --color=always -i "$@" "$DICTIONARY" ) | uniq | head -n 5
