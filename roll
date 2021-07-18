@@ -4,9 +4,18 @@
 
 TOTAL=0
 
+COLS=$(tput cols)
+
 for _ in $(seq "$THROWS"); do
 	NUMBER="$(shuf -i 1-6 -n 1)"
 	TOTAL=$((TOTAL + NUMBER))
+	CURRENT_COLUMN=$((CURRENT_COLUMN + 6))
+
+	[ "$CURRENT_COLUMN" -ge "$COLS" ] \
+		&& echo -e "$ROW1\n$ROW2\n$ROW3\n$ROW4\n$ROW5" \
+		&& ROW1="" && ROW2="" && ROW3="" && ROW4="" && ROW5="" && ROW6="" \
+		&& CURRENT_COLUMN="6"
+
 	case $NUMBER in
 		1)
 			ROW1="${ROW1} -----"

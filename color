@@ -32,7 +32,7 @@
 [ -z "$1" ] \
 	&& echo "Please enter theme" && exit 1
 
-. "$COLORS_DIR/$FILE"
+. "$COLORS_DIR/$1"
 
 [ "${#black}" != 6 ] && echo "File invalid (black)" && exit 1
 [ "${#red}" != 6 ] && echo "File invalid (red)" && exit 1
