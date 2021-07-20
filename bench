@@ -1,0 +1,12 @@
+#!/bin/sh
+TIME=$(date +%s%N)
+START=$TIME
+RESET="\e[0m"
+
+while read -r line; do
+	printf "$RESET %7.7ss | $line\n" "$(echo "scale=3; ( $(date +%s%N) - $TIME ) / 1000000000" | bc)"
+	TIME=$(date +%s%N)
+done
+
+echo
+echo "Done in $(echo "scale=3; ( $(date +%s%N) - $START ) / 1000000000" | bc)s"

@@ -7,6 +7,8 @@ mww, and need them to work to varying extent.
 ## List
 
 - manpac: A friendly frontend for pacman+yay made with dialog.
+- bench: A gnomon clone for timing commands line by line.
+  It manages to be a couple order of magitudes faster than the original.
 - catcat: Completely useless
 - color COLOSCHEME: Sets linux tty colorschemes with easy to read files.
   Read the comments in the beggining to read more.
