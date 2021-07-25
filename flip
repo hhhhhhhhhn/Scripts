@@ -1,10 +1,34 @@
 #!/bin/bash
+[ -z "$1" ] && FLIPS=1 || FLIPS="$1"
 
-NUMBER=$(shuf -i 0-1 -n 1)
+COLS=$(tput cols)
 
-case $NUMBER in
-	0)
-		echo "Heads!";;
-	1)
-		echo "Tails!";;
-esac
+for ((i=0; i<$FLIPS; i++)); do
+	CURRENT_COLUMN=$((CURRENT_COLUMN + 10))
+
+	[ "$CURRENT_COLUMN" -ge "$COLS" ] \
+		&& echo -e "$ROW1\n$ROW2\n$ROW3\n$ROW4\n$ROW5" \
+		&& ROW1="" && ROW2="" && ROW3="" && ROW4="" && ROW5="" && ROW6="" \
+		&& CURRENT_COLUMN=10
+
+	case $((RANDOM % 2)) in
+		0)
+			
+			ROW1="$ROW1   -----  "
+			ROW2="$ROW2  / | | \ "
+			ROW3="$ROW3 |  |=|  |"
+			ROW4="$ROW4  \ | | / "
+			ROW5="$ROW5   -----  " ;;
+		1)
+			TAILS=$((TAILS+1))
+			ROW1="$ROW1   -----  "
+			ROW2="$ROW2  / === \ "
+			ROW3="$ROW3 |   |   |"
+			ROW4="$ROW4  \  |  / "
+			ROW5="$ROW5   -----  " ;;
+	esac
+done
+
+echo -e "$ROW1\n$ROW2\n$ROW3\n$ROW4\n$ROW5" \
+
+echo "$((FLIPS - TAILS)) Heads, $((TAILS)) Tails"
