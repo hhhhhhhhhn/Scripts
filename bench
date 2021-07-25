@@ -1,12 +1,13 @@
 #!/bin/sh
 TIME=$(date +%s%N)
 START=$TIME
-RESET="\e[0m"
+RESET="\033[0m"
 
 LASTLINE=""
 
 while read -r line; do
-	printf "$RESET %7.7ss | $LASTLINE\n" "$(echo "scale=3; ( $(date +%s%N) - $TIME ) / 1000000000" | bc)"
+	printf "$RESET%7.7ss | " "$(echo "scale=3; ( $(date +%s%N) - $TIME ) / 1000000000" | bc)"
+	echo "$LASTLINE"
 	LASTLINE="$line"
 	TIME=$(date +%s%N)
 done
