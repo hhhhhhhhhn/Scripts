@@ -10,13 +10,12 @@ beep() {
 }
 
 display() {
-	echo -ne "\r$DOING "
-	TIME_LEFT=`expr $CYCLE_END - $CURRENT_TIME`
-	echo -n `date "-d@${TIME_LEFT}" -u +%M:%S`
+	TIME_LEFT=$(expr $CYCLE_END - $CURRENT_TIME)
+	printf "\r$DOING $(date "-d@${TIME_LEFT}" -u +%M:%S)"
 }
 
 cycle() {
-	CYCLE_END=`date +%s --date="$1 minutes"`
+	CYCLE_END=$(date +%s --date="$1 minutes")
 	while [ "$CYCLE_END" -gt "$CURRENT_TIME" ]; do
 		CURRENT_TIME=`date +%s`
 		display
@@ -38,6 +37,6 @@ SEQUENCE=`[ -z "$@" ] && echo "25 5 25 5 25 35" || echo "$@"`
 while true; do
 	for TIME in $SEQUENCE; do
 		cycle $TIME
-		DOING=`[ "$DOING" = "rest" ] && echo work || echo rest`
+		DOING=$([ "$DOING" = "rest" ] && echo work || echo rest)
 	done
 done
