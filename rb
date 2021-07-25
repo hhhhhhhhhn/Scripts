@@ -3,7 +3,7 @@
 i=31
 
 while IFS= read line; do
-	echo -e "\033[0;${i}m$line"
+	printf "\033[0;${i}m$line\n"
 	case $i in
 		31) i=33;;
 		33) i=32;;
@@ -14,4 +14,4 @@ while IFS= read line; do
 	esac
 done
 
-echo -e "\033[0m\c"
+printf "\033[0m"
