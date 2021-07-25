@@ -25,6 +25,7 @@ mww, and need them to work to varying extent.
 - note [NOTEPAD]: Take a timestamped markdown note, see my bbn repo for more
   info.
 - pomodoro: Simple pomodoro timer.
+- play SONG: Plays the song using youtube-dl and mpv.
 - randman [QUERY]: Opens a random man page
 - roll [AMOUNT]: Rolls and displays dice.
 - rb: Reads text from stdin and applies rainbow effect, line by line.

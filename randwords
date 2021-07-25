@@ -1,0 +1,7 @@
+#!/bin/sh
+
+[ -z "$DICTIONARY" ] && echo "Please define \$DICTIONARY file" && exit 1
+
+[ -z "$1" ] && WORDS=1 || WORDS="$1"
+
+sed '/^\w*$/d' "$DICTIONARY" | shuf -n $WORDS
