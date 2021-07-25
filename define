@@ -1,7 +1,12 @@
 #!/bin/sh
 
+ESC="$(printf "\033")"
+
 [ -z "$DICTIONARY" ] \
 	&& echo "Set DICTIONARY enviroment variable to a dictionary text file" \
 	&& exit 1
 
-( grep --color=always -i "^$*" "$DICTIONARY" ; grep --color=always -i "$*" "$DICTIONARY" ) | uniq | head -n 5
+( grep -i "^$*" "$DICTIONARY" ; grep -i "$*" "$DICTIONARY" ) \
+	| awk '!seen[$0]++' \
+	| sed "s/$*/$ESC[1m$ESC[31m&$ESC[0m/ig" \
+	| head -n5
