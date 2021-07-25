@@ -10,12 +10,12 @@ beep() {
 }
 
 display() {
-	TIME_LEFT=$(expr $CYCLE_END - $CURRENT_TIME)
+	TIME_LEFT="$(expr $CYCLE_END - $CURRENT_TIME)"
 	printf "\r$DOING $(date "-d@${TIME_LEFT}" -u +%M:%S)"
 }
 
 cycle() {
-	CYCLE_END=$(date +%s --date="$1 minutes")
+	CYCLE_END="$(date +%s --date="$1 minutes")"
 	while [ "$CYCLE_END" -gt "$CURRENT_TIME" ]; do
 		CURRENT_TIME=`date +%s`
 		display
@@ -32,7 +32,7 @@ usage() {
 
 [ "$1" = "-h" ] || [ "$1" = "--help" ] && usage && exit 1
 
-SEQUENCE=`[ -z "$@" ] && echo "25 5 25 5 25 35" || echo "$@"`
+SEQUENCE="$([ -z "$*" ] && echo "25 5 25 5 25 35" || echo "$*")"
 
 while true; do
 	for TIME in $SEQUENCE; do
