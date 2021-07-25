@@ -6,8 +6,8 @@ TOTAL=0
 
 COLS=$(tput cols)
 
-for _ in $(seq "$THROWS"); do
-	NUMBER="$(shuf -i 1-6 -n 1)"
+for (( i=0; i<$THROWS; i++)); do
+	NUMBER=$(($RANDOM % 6 + 1))
 	TOTAL=$((TOTAL + NUMBER))
 	CURRENT_COLUMN=$((CURRENT_COLUMN + 6))
 
