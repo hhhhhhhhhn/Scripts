@@ -12,6 +12,7 @@ mww, and need them to work to varying extent.
 - catcat: Completely useless
 - color COLOSCHEME: Sets linux tty colorschemes with easy to read files.
   Read the comments in the beggining to read more.
+- cursorspeed: Interactive prompt to set cursor speed
 - define: Finds words in dictionary
 - wtconverter FILE: Converts a Windows Terminal theme to one compatible with
   the "color" script.
