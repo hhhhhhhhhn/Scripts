@@ -36,10 +36,15 @@ mww, and need them to work to varying extent.
 - terminxwd: Opens terminal inside the working directory of the focused window.
 - todo [TEXT...]: If text is given, adds it to todo list. Else, displays it.
 - tmr TIME: Simple timer, in practice an interactive "sleep"
+- utfchars: Opens fzy prompt to select an unicode character to copy.
 - view [NOTEPAD]: Displays an entire notepad.
 - wr: Opens up your editor for writing markdown, and copies it as html. Needs
   pandoc.
+- waitfor COMMAND: Waits for COMMAND to exit.
 - xwd: Prints the pwd of the shell of the focused X window using xdotool.
 - yf: yank file, if markdown as html.
-- yt: see youtube videos - ytdl: update youtube videos. YT\_FILE (subscription manager OPML file) and YT\_DIR (directory for files) enviroment variables must be set.  - ytoff: see downloaded youtube videos
+- yt: see youtube videos 
+- ytdl: update youtube videos. YT\_FILE (subscription manager OPML file) and 
+  YT\_DIR (directory for files) enviroment variables must be set.
+- ytoff: see downloaded youtube videos
 - yts QUERY: Seaches youtube videos.
