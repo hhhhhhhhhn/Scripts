@@ -2,7 +2,6 @@
 
 cd $(dirname "$0")
 
-<unicode.txt fzy -l max | cut -d"	" -f1 | tr -d "\n" | xclip -selection clipboard
-
-xclip -selection clipboard -o | xclip -selection primary
-
+CHAR="$(<unicode.txt fzy -l max | cut -d"	" -f1 | tr -d "\n")" 
+echo "$CHAR\c"| xsel -b
+echo "$CHAR\c"| xsel -p
