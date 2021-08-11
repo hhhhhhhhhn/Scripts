@@ -1,0 +1,4 @@
+#!/bin/sh
+FILENAME="$SCREENSHOT_DIR/$(date).png"
+scrot -s "$FILENAME"
+xclip -selection clipboard -i "$FILENAME" -t "image/png"

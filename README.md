@@ -33,6 +33,7 @@ mww, and need them to work to varying extent.
 - redd SUBREDDIT: Displays subreddit images from sxiv.
 - run: Opens up fzy prompt to run a command/alias.
 - sw: A stopwatch
+- screenshot: Saves a screenshot to $SCREENSHOT_DIR and clipboard
 - gmenu: Opens "run" in a new terminal.
 - terminxwd: Opens terminal inside the working directory of the focused window.
 - todo [TEXT...]: If text is given, adds it to todo list. Else, displays it.
