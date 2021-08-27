@@ -4,7 +4,7 @@ dialog >/dev/null 2>&1 || sudo pacman --noconfirm -S dialog
 
 COMMAND="sudo pacman --noconfirm"
 
-function main() {
+main() {
 	while true; do
 		dialog --menu "Select an Option" 0 0 0 \
 			"Exit" "Quit manpac" \
@@ -32,20 +32,20 @@ Programs" --stdout > /tmp/manpac || exit 0
 	done
 }
 
-function search_local() {
+search_local() {
 	$COMMAND -Qs "$1" | xargs -d "\n" dialog --menu menu -1 -1 -1 --stdout \
 		> /tmp/manpac
 	show_program `sed </tmp/manpac -e 's|.*/||' -e 's|\s.*||'`
 }
 
-function search_remote() {
+search_remote() {
 	[ -z "$1" ] && return
 	$COMMAND -Ss "$1" | xargs -d "\n" dialog --menu menu -1 -1 -1 --stdout \
 		> /tmp/manpac
 	show_program `sed </tmp/manpac -e 's|.*/||' -e 's|\s.*||'`
 }
 
-function show_program() {
+show_program() {
 	[ -z "$1" ] && return
 	if $COMMAND -Qi "$1" > /tmp/manpac 2>/dev/null; then
 		TYPE=LOCAL
@@ -61,7 +61,7 @@ function show_program() {
 	program_actions "$1" "$TYPE"
 }
 
-function program_actions() {
+program_actions() {
 	if [ "$2" = "LOCAL" ]; then
 		dialog --menu "What to do with $1?" 0 0 0 \
 			"Nothing" "Go Back" \

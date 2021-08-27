@@ -3,5 +3,5 @@
 cd $(dirname "$0")
 
 CHAR="$(<unicode.txt fzy -l max | cut -d"	" -f1 | tr -d "\n")" 
-echo "$CHAR\c"| xsel -b
-echo "$CHAR\c"| xsel -p
+printf %s "$CHAR"| xsel -b
+printf %s "$CHAR"| xsel -p

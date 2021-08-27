@@ -1,10 +1,9 @@
 #!/bin/sh
 
-function list_commands() {
+list_commands() {
 	find $(echo $PATH | tr : " ") -executable -maxdepth 1 -printf "%f\n"
 	alias | sed "s/=.*//"
 }
 
 COMMAND="$(list_commands 2>/dev/null | fzy -l max -p "run: ")"
-exec "$COMMAND"
-exit
+launch $COMMAND
