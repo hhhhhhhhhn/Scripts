@@ -10,6 +10,7 @@ mww, and need them to work to varying extent.
 - bench: A gnomon clone for timing commands line by line.
   It manages to be a couple order of magitudes faster than the original.
 - catcat: Completely useless
+- cht: A [cht.sh](https://cht.sh) shell
 - color COLOSCHEME: Sets linux tty colorschemes with easy to read files.
   Read the comments in the beggining to read more.
 - cursorspeed: Interactive prompt to set cursor speed
@@ -40,6 +41,7 @@ mww, and need them to work to varying extent.
 - tmr TIME: Simple timer, in practice an interactive "sleep"
 - utfchars: Opens fzy prompt to select an unicode character to copy.
 - view [NOTEPAD]: Displays an entire notepad.
+- voidsrc [ARGS]: void-src helper. Install the xbps-packages repo to use.
 - wr: Opens up your editor for writing markdown, and copies it as html. Needs
   pandoc.
 - waitfor COMMAND: Waits for COMMAND to exit.

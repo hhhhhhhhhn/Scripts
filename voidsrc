@@ -1,0 +1,44 @@
+#!/bin/sh
+[ -z "$XBPS_PACKAGES_DIR" ] && echo "Please set \$XBPS_PACKAGES_DIR" 1>&2 && exit 1
+
+current_pwd="$PWD"
+
+cd "$XBPS_PACKAGES_DIR"
+
+search() {
+	for program in $(find srcpkgs -maxdepth 1 | cut -d"/" -f2 | grep "$1"); do
+		description="$(grep "short_desc" "srcpkgs/$program/template" | cut -d'"' -f2)"
+		printf "%-25s " "$program"
+		echo $description
+	done
+}
+
+update() {
+	git pull
+}
+
+install() {
+	repo="$(grep -E "repo(sitory)?=" "srcpkgs/$1/template" | cut -d"=" -f2)"
+	./xbps-src pkg $1
+
+	sudo xbps-install -y --repository=hostdir/binpkgs $1
+}
+
+remove() {
+	sudo xbps-remove -Ry $1
+}
+
+case $1 in
+	"search")
+		search $2;;
+	"update")
+		update;;
+	"install")
+		install $2;;
+	"remove")
+		remove $2;;
+	*)
+		"Usage: voidsrc [search|update|install|remove] [arg]"
+esac
+
+cd $current_pwd

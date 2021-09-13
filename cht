@@ -1,0 +1,9 @@
+#!/bin/sh
+
+while true; do
+	read query
+	[ "$query" = q ] && exit 0
+	clear
+	echo "$query"
+	curl "cht.sh/${query%% *}/$(echo ${query#* } | tr " " "+")"
+done
