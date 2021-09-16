@@ -3,7 +3,7 @@
 
 main() {
 	while true; do
-		query="$(input -p "> " -H /tmp/cht)"
+		query="$(input -p "> " -H "$HOME/.config/.chthist")"
 		case "$query" in
 			"q"|"quit"|"exit")
 				exit 0
