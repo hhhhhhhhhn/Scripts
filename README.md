@@ -10,7 +10,7 @@ mww, and need them to work to varying extent.
 - bench: A gnomon clone for timing commands line by line.
   It manages to be a couple order of magitudes faster than the original.
 - catcat: Completely useless
-- cht: A [cht.sh](https://cht.sh) shell
+- cht: A shell for cheat sheets, with integration with cht.sh and stackoverflow
 - color COLOSCHEME: Sets linux tty colorschemes with easy to read files.
   Read the comments in the beggining to read more.
 - cursorspeed: Interactive prompt to set cursor speed

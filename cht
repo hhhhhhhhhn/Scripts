@@ -1,9 +1,77 @@
 #!/bin/sh
+[ -z "$CHEAT_DIR" ] && echo "NOTE: \$CHEAT_DIR not set, using only stackoverflow"
 
-while true; do
-	read -p "> " query
-	[ "$query" = q ] && exit 0
-	clear
-	echo "> $query"
-	curl "cht.sh/${query%% *}/$(echo ${query#* } | tr " " "+")"
-done
+main() {
+	while true; do
+		query="$(input -p "> " -H /tmp/cht)"
+		case "$query" in
+			"q"|"quit"|"exit")
+				exit 0
+				;;
+			"a "*|"add "*)
+				add "$(echo $query | cut -d" " -f 2-)"
+				;;
+			"s "*|"so "*)
+				so "$(echo $query | cut -d" " -f 2-)"
+				;;
+			"c "*|"cht"|"cht.sh "*)
+				chtsh "$(echo "$query" | cut -d" " -f 2-)"
+				;;
+			"h"|"help")
+				printhelp
+				;;
+			*)
+				search "$query"
+				;;
+		esac
+	done
+}
+
+search() {
+	localsearch "$1" || so "$query"
+}
+
+localsearch() {
+	LANG="$(echo $1 | cut -d" " -f1)"
+
+	[ -z "$CHEAT_DIR" ] && return 1
+
+	CAT_OUT="$(cat "$CHEAT_DIR/$1" 2>/dev/null)"
+
+	if ! [ -z "$CAT_OUT" ]; then
+		printf "%s" "$CAT_OUT" \
+			| highlight -O ansi --syntax "$LANG"
+		return 0
+	fi
+
+	MATCHING_FILENAME="$(grep -i "$1" "$CHEAT_DIR/"* | head -n1 | cut -d":" -f1)"
+	[ -z "$MATCHING_FILENAME" ] && return 1
+
+	cat "$MATCHING_FILENAME" | highlight -O ansi --syntax "$LANG"
+}
+
+chtsh() {
+	curl "cht.sh/$(echo "$1" | sed -e "s| |/|" -e "s| |+|g")"
+}
+
+add() {
+	echo "$EDITOR" | grep vi >/dev/null \
+		&& FLAGS="-cset ft="$(echo $1 | cut -d" " -f1)""
+	$EDITOR "$FLAGS" "$CHEAT_DIR/$1"
+}
+
+printhelp() {
+cat <<EOF
+cht - Cheat sheet manager
+
+COMMANDS:
+	QUERY          - Search for QUERY in either \$CHEAT_DIR or StackOverflow
+	a(dd) ENTRY    - Creates ENTRY in \$CHEAT_DIR with \$EDITOR
+	h(elp)         - Display this menu
+	q(uit)|exit    - Exit cht
+	s(o) QUERY     - Search QUERY on StackOverflow using "so"
+	c(ht.sh) QUERY - Search QUERY on cht.sh (with curl)
+EOF
+}
+
+main
