@@ -1,5 +1,4 @@
 #!/bin/sh
-
 TERMINAL_PID=$(xdotool getwindowfocus getwindowpid)
 SHELL_PID=$(ps -e -o ppid,pid | grep "^ *$TERMINAL_PID") # " ppid pid" format
 SHELL_PID=${SHELL_PID##* } # "pid" format

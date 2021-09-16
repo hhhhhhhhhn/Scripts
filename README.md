@@ -15,6 +15,7 @@ mww, and need them to work to varying extent.
   Read the comments in the beggining to read more.
 - cursorspeed: Interactive prompt to set cursor speed
 - define: Finds words in dictionary
+- destroy COMMAND: pkills the command until no longer running.
 - wtconverter FILE: Converts a Windows Terminal theme to one compatible with
   the "color" script.
 - compile [FILE]: Compiles different types of files (WIP).
@@ -45,7 +46,7 @@ mww, and need them to work to varying extent.
 - wr: Opens up your editor for writing markdown, and copies it as html. Needs
   pandoc.
 - waitfor COMMAND: Waits for COMMAND to exit.
-- xwd: Prints the pwd of the shell of the focused X window using xdotool.
+- xorgwd: Prints the pwd of the shell of the focused X window using xdotool.
 - yf: yank file, if markdown as html.
 - yt: see youtube videos 
 - ytdl: update youtube videos. YT\_FILE (subscription manager OPML file) and 
