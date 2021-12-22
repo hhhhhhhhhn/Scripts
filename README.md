@@ -20,6 +20,7 @@ mww, and need them to work to varying extent.
   the "color" script.
 - compile [FILE]: Compiles different types of files (WIP).
 - auto FILE: Toggles automatic compiling for a file.
+- flash [-e(dit)]: Simple flashcards
 - flip [AMOUNT]: Flips and displayscoins.
 - font min|max|+|-|=|n: Sets tty font size, needs terminus font. The argument
   can be a specific height, min (=12), max (=32), + (increments one size), -
