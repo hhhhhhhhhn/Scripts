@@ -1,0 +1,6 @@
+#!/bin/sh
+while true; do
+	line="$(tac /tmp/notifications | fzy)"
+	[ -z "$line" ] && exit
+	sed -i "/$line/d" /tmp/notifications
+done
