@@ -37,6 +37,7 @@ mww, and need them to work to varying extent.
 - run: Opens up fzy prompt to run a command/alias.
 - sw: A stopwatch
 - screenshot: Saves a screenshot to $SCREENSHOT_DIR and clipboard
+- search [PATH]: Searches using fzf all files in a directory, including contents
 - gmenu: Opens "run" in a new terminal.
 - terminxwd: Opens terminal inside the working directory of the focused window.
 - todo [TEXT...]: If text is given, adds it to todo list. Else, displays it.

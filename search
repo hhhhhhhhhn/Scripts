@@ -1,0 +1,10 @@
+#!/bin/sh
+find "$1" -not -path '*/.*' -type f -not -name "*index*" \
+	| xargs -d "\n" -I{} realpath --relative-to="." "{}" \
+	| while read -r file; do
+		printf "$file:        "
+		<"$file" tr "\n" " "
+		echo
+	done \
+	| fzf --preview 'echo {} | cut -d ":" -f1 | xargs -d "\n" cat | highlight -Oansi -Smd' \
+	| cut -d ":" -f 1
