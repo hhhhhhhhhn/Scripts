@@ -1,2 +1,2 @@
 #!/bin/sh
-xargs -d "\n" -I{} sh -c 'echo "[$(basename -s.md "{}")]({})"'
+xargs -d "\n" -I{} sh -c 'echo "[$(basename -s.md "{}")](<{}>)"'
