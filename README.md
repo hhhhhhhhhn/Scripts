@@ -41,6 +41,7 @@ mww, and need them to work to varying extent.
 - gmenu: Opens "run" in a new terminal.
 - terminxwd: Opens terminal inside the working directory of the focused window.
 - todo [TEXT...]: If text is given, adds it to todo list. Else, displays it.
+- tomdlink: Turns stdin to markdown link
 - tmr TIME: Simple timer, in practice an interactive "sleep"
 - utfchars: Opens fzy prompt to select an unicode character to copy.
 - view [NOTEPAD]: Displays an entire notepad.
