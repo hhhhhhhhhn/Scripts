@@ -5,9 +5,9 @@ CICLES=0
 CYCLE_END=`date +%s`
 CURRENT_TIME=`date +%s`
 
-beep() {
-	aplay /dev/random -r 128000 -d 2 -q &
-}
+#beep() {
+#	aplay /dev/random -r 128000 -d 2 -q &
+#}
 
 display() {
 	TIME_LEFT="$(expr $CYCLE_END - $CURRENT_TIME)"

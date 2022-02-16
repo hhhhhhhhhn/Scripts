@@ -1,2 +1,2 @@
 #!/bin/sh
-$TERMINAL -cd "$(xorgwd)"
+cd "$(xorgwd)" && $TERMINAL
