@@ -1,0 +1,3 @@
+#!/bin/sh
+eval "[ -d $2 ]" && echo " cd $2" && exit 0
+echo " xdg-open $2"
