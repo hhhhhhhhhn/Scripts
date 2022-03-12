@@ -1,3 +1,4 @@
 #!/bin/sh
-eval "[ -d $2 ]" && echo " cd $2" && exit 0
-echo " xdg-open $2"
+# Note: \025 is ^u, used for cleaning the prompt
+eval "[ -d $2 ]" && echo "\025 cd $2" && exit 0
+echo "\025 xdg-open $2"
