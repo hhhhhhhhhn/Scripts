@@ -3,12 +3,8 @@ TIME=$(date +%s%N)
 START=$TIME
 RESET="\033[0m"
 
-LASTLINE=""
-
 while IFS= read -r line; do
 	printf "\r$RESET%7.7ss | \n" "$(echo "scale=3; ( $(date +%s%N) - $TIME ) / 1000000000" | bc)"
-	#echo "$LASTLINE"
-	LASTLINE="$line"
 	TIME=$(date +%s%N)
 	echo "         | $line\c"
 done
