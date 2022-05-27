@@ -6,11 +6,13 @@ RESET="\033[0m"
 LASTLINE=""
 
 while IFS= read -r line; do
-	printf "$RESET%7.7ss | " "$(echo "scale=3; ( $(date +%s%N) - $TIME ) / 1000000000" | bc)"
-	echo "$LASTLINE"
+	printf "\r$RESET%7.7ss | \n" "$(echo "scale=3; ( $(date +%s%N) - $TIME ) / 1000000000" | bc)"
+	#echo "$LASTLINE"
 	LASTLINE="$line"
 	TIME=$(date +%s%N)
+	echo "         | $line\c"
 done
+printf "\r$RESET%7.7ss \n" "$(echo "scale=3; ( $(date +%s%N) - $TIME ) / 1000000000" | bc)"
 
 echo
 echo "Done in $(echo "scale=3; ( $(date +%s%N) - $START ) / 1000000000" | bc)s"
