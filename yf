@@ -1,8 +1,8 @@
 #!/bin/sh
 
-case $1 in
+case "$1" in
 	*.md)
-		cat $1 | md2html | xclip -t text/html -selection clipboard;;
+		cat "$1" | md2html | xclip -t text/html -selection clipboard;;
 	*)
-		cat $1 | xclip -selection clipboard;;
+		cat "$1" | xclip -selection clipboard;;
 esac

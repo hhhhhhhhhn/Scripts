@@ -45,6 +45,7 @@ mww, and need them to work to varying extent.
 - todo [TEXT...]: If text is given, adds it to todo list. Else, displays it.
 - tomdlink: Turns stdin to markdown link
 - tmr TIME: Simple timer, in practice an interactive "sleep"
+- trans-sel: Translates selection using traslate-shell.
 - utfchars: Opens fzy prompt to select an unicode character to copy.
 - view [NOTEPAD]: Displays an entire notepad.
 - voidsrc [ARGS]: void-src helper. Install the xbps-packages repo to use.

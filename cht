@@ -17,6 +17,9 @@ main() {
 			"c "*|"cht"|"cht.sh "*)
 				chtsh "$(echo "$query" | cut -d" " -f 2-)"
 				;;
+			"t"*)
+				trans "$(echo "$query" | cut -d" " -f 2-)"
+				;;
 			"h"|"help")
 				printhelp
 				;;
