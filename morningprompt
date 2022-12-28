@@ -1,0 +1,9 @@
+#!/bin/sh
+filename="/tmp/morningprompt$(date +%d%m%y)"
+
+[ -f "$filename" ] && exit
+
+rm /tmp/morningprompt* 2>/dev/null
+touch "$filename"
+
+cat "$MORNING_PROMPT"

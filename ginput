@@ -1,0 +1,25 @@
+#!/bin/sh
+DEVICE_STRING="$(
+	xinput --list \
+		| fzy
+)"
+
+DEVICE_ID="$(
+	echo "$DEVICE_STRING" \
+		| grep -o 'id=\S*' \
+		| cut -b 4-
+)"
+
+PROP_STRING="$(
+	xinput --list-props $DEVICE_ID \
+		| fzy
+)"
+
+echo "$DEVICE_STRING" | sed 's/^[^a-zA-Z]*//'
+echo "$PROP_STRING"
+
+PROP_ID="$(echo "$PROP_STRING" | grep -Eo '\([0-9]*\)' | tr -d "()")"
+
+read -p "New Value: " value
+
+xinput --set-prop "$DEVICE_ID" "$PROP_ID" "$value"
