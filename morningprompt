@@ -6,4 +6,4 @@ filename="/tmp/morningprompt$(date +%d%m%y)"
 rm /tmp/morningprompt* 2>/dev/null
 touch "$filename"
 
-cat "$MORNING_PROMPT"
+$MORNING_COMMAND

@@ -1,0 +1,2 @@
+#!/bin/sh
+dwm-msg run_command spawn_shell "$@"
