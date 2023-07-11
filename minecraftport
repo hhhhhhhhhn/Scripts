@@ -1,0 +1,9 @@
+#!/bin/sh
+ipaddress="$(ip addr | sed -En 's/127.0.0.1//;s/.*inet (addr:)?(([0-9]*\.){3}[0-9]*).*/\2/p')"
+
+echo "Local IP Address: $ipaddress"
+
+[ -z "$1" ] && echo "Usage: minecraftport open/close" && exit 1
+
+[ "$1" = "open" ] && upnpc -a "$ipaddress" 25565 25565 TCP && upnpc -a "$ipaddress" 25565 25565 UDP
+[ "$1" = "close" ] && upnpc -d 25565 TCP && upnpc -d 25565 UDP
