@@ -1,2 +1,7 @@
 #!/bin/sh
-cd "$(xorgwd)" && $TERMINAL
+cd "$(xorgwd)" 
+if [ -z "$@" ]; then
+	$TERMINAL
+else
+	$TERMINAL -e sh -c "$@"
+fi
