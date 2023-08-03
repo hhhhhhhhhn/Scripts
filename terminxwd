@@ -1,7 +1,8 @@
 #!/bin/sh
 cd "$(xorgwd)" 
-if [ -z "$@" ]; then
+
+if [ -z "$*" ]; then
 	$TERMINAL
 else
-	$TERMINAL -e sh -c "$@"
+	$TERMINAL -- $SHELL -i -c "$*"
 fi
