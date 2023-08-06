@@ -1,0 +1,30 @@
+#!/bin/sh
+[ -z "$TRASHDIR" ] && TRASHDIR="$HOME/.local/share/trash/"
+mkdir -p "$TRASHDIR"
+
+usage () {
+	echo "Usage: $0 [-r] [-f] [-i] [--really] PATH [PATHS...]"
+}
+
+
+while true; do
+	case "$1" in
+		--really) actuallyremove=1; shift;;
+		-r) shift;;
+		-R) shift;;
+		-f) shift;;
+		-i) shift;;
+		-h|--help) usage; exit;;
+		--) shift; break;;
+		*) break;;
+	esac
+done
+
+for file in "$@"; do
+	filename="$(basename "$file").$(date +%s)"
+	if [ "$actuallyremove" = 1 ]; then
+		rm -rfI "$file"
+	else
+		mv "$file" "$TRASHDIR/$filename"
+	fi
+done
