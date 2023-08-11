@@ -1,0 +1,2 @@
+#!/bin/sh
+ls -t ~/Images/Screenshots | head -n 1 | xargs -I"{}" tesseract "$HOME/Images/Screenshots/{}" - | xclip -sel c
