@@ -1,4 +1,15 @@
 #!/bin/sh
 # Note: \025 is ^u, used for cleaning the prompt
-eval "[ -d $2 ]" && echo "\025 cd $2" && exit 0
-echo "\025 xdg-open $2"
+[ -d "$2" ] && echo "\025 cd $2" && exit 0 # is a directory
+
+mime="$(file --mime-type "$2" | cut -d: -f2 | cut -b 2-)"
+
+case "$mime" in
+	"text/html") echo "\025 xdg-open $2";;
+	"text/"*) echo "\025 nvim $2";;
+	"application/json") echo "\025 nvim $2";;
+	"application/javascript") echo "\025 nvim $2";;
+	*) echo "\025 xdg-open $2";;
+esac
+
+
