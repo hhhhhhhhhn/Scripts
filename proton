@@ -1,0 +1,4 @@
+#!/bin/sh
+export STEAM_COMPAT_DATA_PATH=$HOME/.local/share/Steam/steamapps/compatdata
+export STEAM_COMPAT_CLIENT_INSTALL_PATH=$HOME/.local/share/Steam/steamapps/compatdata
+$HOME/.local/share/Steam/steamapps/common/Proton\ -\ Experimental/proton run $@

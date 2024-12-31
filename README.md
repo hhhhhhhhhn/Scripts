@@ -32,6 +32,7 @@ mww, and need them to work to varying extent.
 - pomodoro: Simple pomodoro timer.
 - play SONG: Plays the song using youtube-dl and mpv.
 - plumb -m FILE/URL: Given URL or FILE in cwd, outputs a command to interact with it
+- proton PROGRAM: Runs a program using Steam's Proton.
 - randman [QUERY]: Opens a random man page
 - roll [AMOUNT]: Rolls and displays dice.
 - rb: Reads text from stdin and applies rainbow effect, line by line.
