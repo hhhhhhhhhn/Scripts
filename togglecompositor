@@ -1,0 +1,3 @@
+#!/bin/sh
+pgrep picom >/dev/null && pkill picom && exit 0
+launch picom --no-fading-openclose --realtime

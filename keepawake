@@ -1,0 +1,16 @@
+#!/bin/sh
+# From https://old.reddit.com/r/i3wm/comments/nrzz59/comment/h0jvm7n/
+if [ "$1" = "enable" ]; then
+    xset s off
+    xset -dpms
+    echo "enabled" > /run/user/$(id -u)/caffeine.txt
+    echo "Keep awake enabled"
+elif [ "$1" = "disable" ]; then
+    xset +dpms
+    xset s on
+    rm -f /run/user/$(id -u)/caffeine.txt
+    echo "Keep awake disabled"
+else
+	echo "Usage: $0 [enable|disable]"
+	exit 1
+fi

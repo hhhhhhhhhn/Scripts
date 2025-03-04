@@ -27,6 +27,7 @@ mww, and need them to work to varying extent.
   can be a specific height, min (=12), max (=32), + (increments one size), -
   (decreases one size), = (keeps the same) or nothing (=16). The FONT\_BOLD
   and FONT\_DUP enviroment variables control if the font is bold or duplicated.
+- keepawake enable|disable: Toggles screen sleep
 - note [NOTEPAD]: Take a timestamped markdown note, see my bbn repo for more
   info.
 - pomodoro: Simple pomodoro timer.
@@ -47,6 +48,7 @@ mww, and need them to work to varying extent.
 - tomdlink: Turns stdin to markdown link
 - tmr TIME: Simple timer, in practice an interactive "sleep"
 - trans-sel: Translates selection using traslate-shell.
+- togglecompositor: Toggles picom
 - utfchars: Opens fzy prompt to select an unicode character to copy.
 - view [NOTEPAD]: Displays an entire notepad.
 - voidsrc [ARGS]: void-src helper. Install the xbps-packages repo to use.
